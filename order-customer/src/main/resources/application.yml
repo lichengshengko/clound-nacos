@@ -1,0 +1,10 @@
+server:
+  port: 6020
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+#server.port=6010
+#spring.application.name=springcloud-eureka-client-order
+#eureka.client.serviceUrl.defaultZone=http://127.0.0.1:6001/eureka/
