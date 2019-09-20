@@ -9,4 +9,7 @@ public interface TestFeginServiceClient {
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String test();
+
+    @RequestMapping(value = "/insert", method = RequestMethod.GET)
+    public String insert();
 }

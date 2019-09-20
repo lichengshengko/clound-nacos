@@ -31,4 +31,13 @@ public class TestController {
         return testService.test();
     }
 
+    /**
+     * 利用Fegin客户端实现RPC调用order服务
+     * @return
+     */
+    @RequestMapping(value = "/order/insert", method = RequestMethod.GET)
+    public String insert(){
+        return testService.insert();
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.cloud.demo.controller;
 
+import com.cloud.demo.entity.User;
 import com.cloud.demo.mapper.UserMapper;
 import com.cloud.demo.redis.RedisModel;
 import com.cloud.demo.redis.RedisModelService;
@@ -45,10 +46,8 @@ public class TestController {
     }
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String test(HttpServletRequest request) {
-        String id = request.getHeader("userId");
-        String content = request.getParameter("content");
-        return "hello，this is client-order:" + port + "-id:" + id;
+    public String test() {
+        return "hello，this is client-order:" + port;
     }
 
     @RequestMapping(value = "/test", method = RequestMethod.POST)
@@ -64,6 +63,14 @@ public class TestController {
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public Object list() {
-        return null;
+        return userMapper.selectAll();
+    }
+
+    @RequestMapping(value = "/insert", method = RequestMethod.GET)
+    public Integer insert() {
+        User user = new User();
+        user.setName(System.currentTimeMillis()+"");
+        userMapper.insert(user);
+        return user.getId();
     }
 }
