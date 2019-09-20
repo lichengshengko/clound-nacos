@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>eurka1</module>
         <module>order</module>
         <module>order-customer</module>
         <module>geteway</module>
+        <module>redis</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
