@@ -12,11 +12,12 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by Administrator on 2017/3/1 14:57.
  */
-public abstract class IRedisService<T> {
+public abstract class IRedisHashService<T> {
     @Autowired
     protected RedisTemplate<String, Object> redisTemplate;
     @Resource
     protected HashOperations<String, String, T> hashOperations;
+
 
     /**
      * 存入redis中的key

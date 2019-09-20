@@ -1,7 +1,8 @@
 package com.cloud.demo.controller;
 
 import com.cloud.demo.redis.RedisModel;
-import com.cloud.demo.redis.RedisServiceImpl;
+import com.cloud.demo.redis.RedisModelService;
+import com.cloud.demo.redis.RedisValueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,9 +20,11 @@ public class TestController {
     @Value("${server.port}")
     String port;
     @Autowired
-    RedisServiceImpl redisService;
+    RedisModelService redisService;
+    @Autowired
+    RedisValueService redisValueService;
 
-    @RequestMapping(value = "/redis", method = RequestMethod.GET)
+    @RequestMapping(value = "/redis/hash", method = RequestMethod.GET)
     public Object redis(HttpServletRequest request) {
         RedisModel m = new RedisModel();
         m.setName("张三");
@@ -30,6 +33,12 @@ public class TestController {
         m.setRedisKey("zhangsanKey01");
         redisService.put(m.getRedisKey(), m, -1);
         return redisService.get(m.getRedisKey());
+    }
+
+    @RequestMapping(value = "/redis/value", method = RequestMethod.GET)
+    public Object value(HttpServletRequest request) {
+        redisValueService.set("lcs", "李成胜");
+        return redisValueService.get("lcs");
     }
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
