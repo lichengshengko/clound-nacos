@@ -1,5 +1,6 @@
 package com.cloud.demo.controller;
 
+import com.cloud.demo.mapper.UserMapper;
 import com.cloud.demo.redis.RedisModel;
 import com.cloud.demo.redis.RedisModelService;
 import com.cloud.demo.redis.RedisValueService;
@@ -23,6 +24,8 @@ public class TestController {
     RedisModelService redisService;
     @Autowired
     RedisValueService redisValueService;
+    @Autowired
+    UserMapper userMapper;
 
     @RequestMapping(value = "/redis/hash", method = RequestMethod.GET)
     public Object redis(HttpServletRequest request) {
@@ -57,5 +60,10 @@ public class TestController {
             s += stringEnumeration.nextElement() + ",";
         }
         return "hello，this is client-order:" + port + "-id:" + s;
+    }
+
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public Object list() {
+        return null;
     }
 }
